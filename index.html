@@ -7,88 +7,195 @@
 <title>SULTAN AI</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#0b1020;color:#f1f5f9}
-header{padding:22px;text-align:center;background:#111a30;border-bottom:1px solid #26334d}
-header h1{margin:0;color:#60a5fa}
-header p{color:#94a3b8;font-size:14px}
-main{max-width:850px;margin:auto;padding:20px}
-.hero{text-align:center;padding:30px 10px}
-.hero h2{font-size:27px}
-.hero p{color:#b6c3d6;line-height:2}
-.card{background:#121b30;border:1px solid #293957;border-radius:16px;padding:20px;margin:18px 0}
-button{width:100%;padding:14px;border:0;border-radius:10px;background:#2563eb;color:white;font-size:16px;font-weight:bold;margin-top:12px}
-button:hover{opacity:.9}
-.green{background:#16a34a}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
-.plan{border:1px solid #334155;border-radius:14px;padding:16px;background:#0e1729}
-.plan h3{color:#60a5fa}
-.price{font-size:23px;font-weight:bold}
-ul{line-height:2;color:#cbd5e1}
-footer{text-align:center;color:#64748b;padding:25px}
-@media(max-width:550px){.grid{grid-template-columns:1fr}}
+body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#0b1120;color:#f1f5f9}
+button{cursor:pointer;font-family:inherit}
+.layout{display:flex;min-height:100vh}
+.sidebar{width:245px;background:#111827;border-left:1px solid #263244;padding:24px 16px}
+.logo{font-size:23px;font-weight:bold;color:#60a5fa;margin-bottom:30px}
+.logo span{color:white}
+.nav{display:flex;flex-direction:column;gap:8px}
+.nav button{padding:14px;text-align:right;border:0;border-radius:10px;background:transparent;color:#cbd5e1;font-size:14px}
+.nav button:hover,.nav button.active{background:#1e293b;color:#60a5fa}
+.main{flex:1;padding:25px;min-width:0}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:28px}
+.top h1{font-size:22px;margin:0}
+.tag{background:#172554;color:#93c5fd;padding:9px 12px;border-radius:20px;font-size:12px}
+.welcome{background:linear-gradient(120deg,#1d4ed8,#4338ca);padding:25px;border-radius:18px;margin-bottom:24px}
+.welcome h2{margin:0 0 12px;font-size:23px}
+.welcome p{color:#dbeafe;line-height:2;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-bottom:25px}
+.card{background:#111827;border:1px solid #263244;border-radius:15px;padding:20px}
+.stat{font-size:12px;color:#94a3b8}
+.number{font-size:27px;font-weight:bold;margin-top:12px}
+.section{font-size:18px;margin:25px 0 15px}
+.platforms{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.platform{background:#111827;border:1px solid #263244;border-radius:15px;padding:20px}
+.platform h3{margin-top:0}
+.platform p{font-size:13px;color:#94a3b8;line-height:2}
+.btn{border:0;border-radius:10px;background:#2563eb;color:white;padding:12px 16px;font-size:14px}
+.btn:hover{background:#1d4ed8}
+.btn2{background:#334155}
+.plans{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.price{font-size:25px;font-weight:bold;margin:15px 0}
+.plan li{margin:12px 0;color:#cbd5e1;font-size:13px}
+.footer{margin-top:30px;color:#64748b;font-size:12px;text-align:center}
+.hidden{display:none}
+.mobilemenu{display:none}
+@media(max-width:750px){
+.layout{display:block}
+.sidebar{width:100%;padding:15px}
+.nav{display:grid;grid-template-columns:repeat(2,1fr)}
+.main{padding:16px}
+.grid{grid-template-columns:1fr}
+.platforms,.plans{grid-template-columns:1fr}
+.top h1{font-size:18px}
+.welcome h2{font-size:20px}
+}
 </style>
 </head>
 <body>
-<header>
-<h1>SULTAN AI</h1>
-<p>دستیار هوشمند شبکه‌های اجتماعی</p>
-</header>
-<main>
-<section class="hero">
-<h2>مدیریت هوشمند پیام‌های شما</h2>
-<p>دستیار هوشمند خود را به شبکه‌های اجتماعی وصل کنید و پاسخ‌گویی به پیام‌ها را آسان‌تر کنید.</p>
-</section>
-
-<div class="card">
-<h2>شبکه‌های اجتماعی</h2>
-<div class="grid">
-<div class="plan">
-<h3>Telegram</h3>
-<p>دستیار هوشمند تلگرام</p>
-<button onclick="alert('اتصال تلگرام در نسخه بعدی فعال می‌شود.')">اتصال تلگرام</button>
+<div class="layout">
+<aside class="sidebar">
+<div class="logo">SULTAN <span>AI</span></div>
+<div class="nav">
+<button class="active" onclick="showPage('home')">🏠 داشبورد</button>
+<button onclick="showPage('connections')">🔗 اتصال شبکه‌ها</button>
+<button onclick="showPage('assistant')">🤖 دستیار هوش مصنوعی</button>
+<button onclick="showPage('plans')">💎 اشتراک‌ها</button>
+<button onclick="showPage('settings')">⚙️ تنظیمات</button>
 </div>
-<div class="plan">
-<h3>WhatsApp</h3>
-<p>دستیار هوشمند واتساپ</p>
-<button class="green" onclick="alert('اتصال واتساپ در نسخه بعدی فعال می‌شود.')">اتصال واتساپ</button>
-</div>
-</div>
+</aside>
+<main class="main">
+<div class="top">
+<h1 id="pageTitle">داشبورد SULTAN AI</h1>
+<div class="tag">نسخه آزمایشی</div>
 </div>
 
-<div class="card">
-<h2>اشتراک‌های ما</h2>
+<div id="home">
+<div class="welcome">
+<h2>به SULTAN AI خوش آمدید 👋</h2>
+<p>مدیریت پیام‌ها و دستیاران هوشمند شبکه‌های اجتماعی در یک مکان. هدف ما آسان‌کردن ارتباط با مشتریان شما است.</p>
+<button class="btn" onclick="showPage('connections')">شروع اتصال</button>
+</div>
+
 <div class="grid">
-<div class="plan">
-<h3>پایه</h3>
-<p class="price">$5 / ماه</p>
+<div class="card">
+<div class="stat">شبکه‌های اجتماعی</div>
+<div class="number">0</div>
+</div>
+<div class="card">
+<div class="stat">دستیاران فعال</div>
+<div class="number">0</div>
+</div>
+<div class="card">
+<div class="stat">وضعیت حساب</div>
+<div class="number" style="font-size:19px;color:#fbbf24">آزمایشی</div>
+</div>
+</div>
+
+<h2 class="section">شبکه‌های اجتماعی</h2>
+<div class="platforms">
+<div class="platform">
+<h3>✈️ Telegram</h3>
+<p>دستیار هوشمند برای پاسخ‌گویی خودکار به پیام‌های تلگرام.</p>
+<button class="btn" onclick="showPage('connections')">اتصال تلگرام</button>
+</div>
+<div class="platform">
+<h3>🟢 WhatsApp</h3>
+<p>مدیریت پیام‌ها و پاسخ‌گویی هوشمند به مشتریان واتساپ.</p>
+<button class="btn" onclick="showPage('connections')">اتصال واتساپ</button>
+</div>
+</div>
+</div>
+
+<div id="connections" class="hidden">
+<h2 class="section">اتصال شبکه‌های اجتماعی</h2>
+<div class="platforms">
+<div class="platform">
+<h3>✈️ Telegram</h3>
+<p>در آینده می‌توانیم ربات تلگرام را با حساب شما متصل کنیم.</p>
+<button class="btn" onclick="alert('این بخش هنوز به سیستم اتصال واقعی وصل نشده است.')">اتصال تلگرام</button>
+</div>
+<div class="platform">
+<h3>🟢 WhatsApp</h3>
+<p>اتصال رسمی واتساپ به سیستم در مراحل بعدی توسعه خواهد شد.</p>
+<button class="btn" onclick="alert('این بخش هنوز به سیستم اتصال واقعی وصل نشده است.')">اتصال واتساپ</button>
+</div>
+<div class="platform">
+<h3>📷 Instagram</h3>
+<p>اتصال اینستاگرام در نسخه‌های آینده.</p>
+<button class="btn btn2" onclick="alert('به زودی')">به زودی</button>
+</div>
+<div class="platform">
+<h3>💬 Messenger</h3>
+<p>اتصال مسنجر در نسخه‌های آینده.</p>
+<button class="btn btn2" onclick="alert('به زودی')">به زودی</button>
+</div>
+</div>
+</div>
+
+<div id="assistant" class="hidden">
+<h2 class="section">دستیار هوش مصنوعی</h2>
+<div class="card">
+<h3>🤖 دستیار SULTAN AI</h3>
+<p style="color:#94a3b8;line-height:2">در نسخه آینده، می‌توانید برای هر شبکه اجتماعی دستیار بسازید، شخصیت آن را تنظیم کنید و پاسخ‌های خودکار را فعال نمایید.</p>
+<button class="btn" onclick="alert('ساخت دستیار هنوز فعال نشده است.')">ساخت دستیار</button>
+</div>
+</div>
+
+<div id="plans" class="hidden">
+<h2 class="section">پلن‌های اشتراک</h2>
+<div class="plans">
+<div class="card plan">
+<h3>پلن Basic</h3>
+<div class="price">$5 / ماه</div>
 <ul>
-<li>یک دستیار</li>
-<li>اتصال یک شبکه</li>
-<li>تنظیم پاسخ‌ها</li>
+<li>یک دستیار هوشمند</li>
+<li>امکانات ابتدایی</li>
+<li>مدیریت یک شبکه</li>
 </ul>
-<button onclick="alert('سیستم پرداخت در آینده فعال می‌شود.')">خرید اشتراک</button>
+<button class="btn" onclick="alert('پرداخت هنوز فعال نشده است.')">انتخاب پلن</button>
 </div>
-<div class="plan">
-<h3>حرفه‌ای</h3>
-<p class="price">$10 / ماه</p>
+<div class="card plan">
+<h3>پلن Pro</h3>
+<div class="price">$10 / ماه</div>
 <ul>
 <li>چند دستیار</li>
 <li>امکانات بیشتر</li>
-<li>تنظیمات پیشرفته</li>
+<li>مدیریت چند شبکه</li>
 </ul>
-<button onclick="alert('سیستم پرداخت در آینده فعال می‌شود.')">خرید اشتراک</button>
+<button class="btn" onclick="alert('پرداخت هنوز فعال نشده است.')">انتخاب پلن</button>
 </div>
 </div>
 </div>
 
+<div id="settings" class="hidden">
+<h2 class="section">تنظیمات</h2>
 <div class="card">
-<h2>درباره SULTAN AI</h2>
-<p style="line-height:2;color:#cbd5e1">
-SULTAN AI یک پلتفرم برای مدیریت و خودکارسازی پیام‌های شبکه‌های اجتماعی است. هدف ما فراهم‌کردن دستیارهای هوشمند برای کاربران و کسب‌وکارها است.
-</p>
+<h3>تنظیمات حساب</h3>
+<p style="color:#94a3b8;line-height:2">تنظیمات حساب مشتریان و امنیت در نسخه‌های آینده فعال خواهد شد.</p>
 </div>
+</div>
+
+<div class="footer">SULTAN AI © 2026 | پلتفرم هوشمند</div>
 </main>
-<footer>© 2026 SULTAN AI</footer>
+</div>
+
+<script>
+function showPage(id){
+const pages=['home','connections','assistant','plans','settings'];
+pages.forEach(p=>document.getElementById(p).classList.add('hidden'));
+document.getElementById(id).classList.remove('hidden');
+const titles={
+home:'داشبورد SULTAN AI',
+connections:'اتصال شبکه‌های اجتماعی',
+assistant:'دستیار هوش مصنوعی',
+plans:'پلن‌های اشتراک',
+settings:'تنظیمات'
+};
+document.getElementById('pageTitle').innerText=titles[id];
+document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+}
+</script>
 </body>
 </html>
-
